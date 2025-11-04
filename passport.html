@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>решение задачи</title>
+    </head>
+    <body>
+        <div class="container">
+        <h1>Решение алгоритмической задачи</h1>
+        <div class="input-group">
+            <label for="edgeA">Ребро куба A (м):</label>
+            <input type="number" id="edgeA" step="0.01" required>
+        </div>
+        <div class="input-group">
+            <label for="heightH">Высота цилиндра H (м):</label>
+            <input type="number" id="heightH" step="0.01" required>
+        </div>
+        <div class="input-group">
+            <label for="radiusR">Радиус основания цилиндра R (м):</label>
+            <input type="number" id="radiusR" step="0.01" required>
+        </div>
+        <div class="input-group">
+            <label for="volumeM">Объём жидкости M (м³):</label>
+            <input type="number" id="volumeM" step="0.01" required>
+        </div>
+        <button onclick="checkCapacity()">Проверить вместимость</button>
+        <p>Результат: <span id="result"></span></p>
+    </div>
+    <script>
+        function checkCapacity() {
+            let A = parseFloat(document.getElementById("edgeA").value);
+            let H = parseFloat(document.getElementById("heightH").value);
+            let R = parseFloat(document.getElementById("radiusR").value);
+            let M = parseFloat(document.getElementById("volumeM").value);
+
+            let cubeV = Math.pow(A, 3);
+            let r2 = Math.pow(R, 2);
+            let cylV = Math.PI * r2 * H;
+            
+            if (M <= cubeV && M <= cylV) {
+                document.getElementById("result").textContent = "вместится в оба";
+            } else if (M <= cubeV && M > cylV) {
+                document.getElementById("result").textContent = "только в куб";
+            } else if (M > cubeV && M <= cylV) {
+                document.getElementById("result").textContent = "только в цилиндр";
+            } else {
+                document.getElementById("result").textContent = "ни в один";
+            }
+        }
+    </script>
+    </script>
+   </body>
+</html>
