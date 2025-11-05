@@ -1,7 +1,127 @@
 <DOCTYPE! html>
-    <html lang="ru">
+<html lang="ru">
    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>паспорт</title>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>паспорт</title>
+     <style>
+     .template{
+          padding-top: 0px;
+          height: 750px;
+          background-image: url(backdrop.jpg);
+          background-repeat: no-repeat;
+          color: black;
+               }
+     .vydan{
+          font-family: 'DIN Condensed';
+          padding-top: 55px;
+          padding-left: 115px;
+          }
+     .vydandate{
+          font-family:'DIN Condensed';
+          padding-top: 10px;
+          padding-left: 105px;
+          word-spacing: 0.65em;
+          float: left
+             }
+     .code{
+          font-family: 'DIN Condensed';
+          padding-top: 28px;
+          padding-left: 299px;
+          word-spacing: 0.65em;
+               }
+     .sign{
+          padding-top: 15px;
+          padding-left: 55px;
+          float: left;
+               }
+     .sign2{
+          padding-top: 19px;
+          padding-left: 165px;
+               }
+     .photo{
+          width: 120px;
+          height: 150px;
+          padding-top: 85px;
+          padding-left: 29px;
+          float:left;
+          }
+     .sur{
+          padding-top: 50px;
+          padding-left: 250px ;
+          }
+     .nam{
+          padding-top: 3px;
+          padding-left: 250px;
+          line-height: 25px;
+          }
+
+     .floor{
+          padding-top: -10px;
+          padding-left: 80px;
+          float: left
+          }
+     .birth{
+          padding-top: 1px;
+          padding-left: 340px;
+          }
+     .city{
+          padding-top: 1px;
+          padding-left: 350px;
+          word-spacing: 0.7em;
+          }
+     </style>
+     </head>
+     <body>
+          <div class="template">
+               <div id="pt">
+                  <p class="vydan">ГУ МВД РФ ПО МОСКОВСКОЙ ОБЛАСТИ</p>
+                  <p class="vydandate">33.33.3033</p>
+                  <p class="code">333-333</p>
+                  <img class="sign" src="sig.png" width="100px">
+                  <img class="sign2" src="sig.png" width="100px">
+               </div>
+               <div id="pb">
+                    <img class="photo" src="mypic.jpg">
+                    <p class="sur">ВОСКРЕСЕНСКАЯ</p>
+                    <p class="nam">КАПИТОЛИНА<br>АЛЕКСАНДРОВНА</p>
+                    <p class="floor">Ж</p>
+                    <p class="birth">33.33.3333</p>
+                    <p class="city">г.НУГДЕТО</p>
+               </div>
+          </div>
+     <button type="button" id="lat";>В Латиницу</button>
+     <script>
+        const change = document.getElementById("lat");
+        function change_all(){
+          const flval = document.getElementsByClassName('floor')[0];
+    
+          if (flval.textContent === 'F'){
+          updateElements({
+            vydan: 'ГУ МВД ПО Г. МОСКОВСКОЙ ОБЛАСТИ',
+            sur: 'ВОСКРЕСЕНСКАЯ',
+            nam: 'КАПИТОЛИНА АЛЕКСАНДРОВНА',
+            floor: 'Ж',
+            city: 'г.НУГДЕТО'
+          });
+          }
+          else if (flval.textContent === 'Ж'){
+          updateElements({
+            vydan: 'THE MINISTRY OF INTERNAL AFFAIRS OF RUSSIA IN THE MOSCOW DISTRICT',
+            sur: 'VOSKRESENSKAYA',
+            nam: 'KAPITOLINA ALERSANDROVNA',
+            floor: 'F',
+            city: 'SOMEWHERE'
+          });
+          }
+          }    
+
+          function updateElements(updates) {
+               for (const [className, text] of Object.entries(updates)) {
+               document.getElementsByClassName(className)[0].textContent = text;
+          }
+          }
+          change.addEventListener("click", change_all)  
+     </script>
+     </body>
    </head>
